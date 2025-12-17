@@ -2,14 +2,15 @@ import { X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FEcheckPayment } from "./orderService";
 import { useNavigate } from "react-router-dom";
+import { Check } from "lucide-react";
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  bankCode: string;   // vd: "mb"
-  accountNumber: string; // vd: "0123456789"
-  accountName: string; // vd: "NGUYEN VAN A"
-  amount: number;     // số tiền muốn hiển thị
+  bankCode: string;   
+  accountNumber: string; 
+  accountName: string; 
+  amount: number;     
   note: string;
 };
 
@@ -63,7 +64,7 @@ export default function PaymentQRModal({
   return (
     
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl p-6 w-80 relative">
+      {!paymentConfirm ? <div className="bg-white rounded-xl p-6 w-80 relative">
         <button
           onClick={onClose}
           className="absolute top-2 right-2"
@@ -97,7 +98,39 @@ export default function PaymentQRModal({
         >
           {paymentConfirm ? "Thanh toán thanh công":"Đang kiểm tra..."}
         </button>
-      </div>
+      </div> 
+      : 
+      <div className="bg-white rounded-xl p-6 w-80 flex flex-col">
+        <div className="flex justify-end">
+            <button
+              onClick={onClose}
+            >
+              <X />
+            </button>   
+        </div>
+
+        <h2 className="text-xl font-semibold text-center mb-2">
+          Thanh toán QR
+        </h2>
+       <div className="flex justify-center">
+        <div className="flex justify-center items-center rounded-4xl bg-green-400 w-16 h-16">
+          <Check size={30} />
+        </div>
+       </div>
+
+        <button
+          className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+          onClick={() => {
+           navigate(`/user`);
+           localStorage.removeItem("order");
+           localStorage.removeItem("order_price");
+           localStorage.removeItem("numberUser");
+          }}
+        >
+          {paymentConfirm ? "Thanh toán thanh công":"Đang kiểm tra..."}
+        </button>
+      </div>}
+      
     </div>
   );
 }
