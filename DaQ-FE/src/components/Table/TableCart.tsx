@@ -15,7 +15,7 @@ const TableCart = ({
 }: TableProps) => {
   return (
     <div
-      className={`border rounded-2xl w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] h-48 flex justify-center items-center ${
+      className={`border rounded-2xl w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] h-48 flex justify-around items-center ${
         table.status === "Available" ? "bg-green-400" : "bg-red-400"
       }`}
     >
@@ -37,15 +37,18 @@ const TableCart = ({
               setIsModalOpen(true);
             }}
           >
-            Update
+            Sửa
           </button>
           <button
             className="px-4 py-2 bg-red-500 text-white rounded"
             onClick={() => handleDeleteTable(table)}
           >
-            Delete
+            Xóa
           </button>
         </div>
+      </div>
+      <div className=" gap-2">
+        <img src={`https://quickchart.io/qr?text=localhost:5173/auth/${table.id}`} alt="QR code" />
       </div>
     </div>
   );

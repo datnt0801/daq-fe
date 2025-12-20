@@ -48,7 +48,7 @@ export default function Header({
               : " bg-red-700 rounded-full w-4 h-4 flex items-center justify-center"
           }
         >
-          {foodItemSelected.length}
+          {foodItemSelected.reduce((acc, item) => acc + item.quantity, 0)}
         </div>
       </button>
     </header>

@@ -8,12 +8,12 @@ export default function ProtectedRoute({ allowedRoles }: ProtectedRouteProps) {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-  // Nếu chưa đăng nhập -> đá về trang /auth
+  // Nếu chưa đăng nhập đá về trang /auth
   if (!token) {
     return <Navigate to="/auth" replace />;
   }
 
-  // Nếu role không khớp -> đá về home
+  // Nếu role không khớp  đá về home
   if (!allowedRoles.includes(user?.userType || "")) {
     if (user?.userType === "ADMIN") {
       return <Navigate to="/admin" replace />;
@@ -24,6 +24,6 @@ export default function ProtectedRoute({ allowedRoles }: ProtectedRouteProps) {
     return <Navigate to="/" replace />;
   }
 
-  // Hợp lệ -> render route con
+  // Hợp lệ render route con
   return <Outlet />;
 }

@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <nav className="bg-white fixed top-0 left-0 w-full z-50 shadow-xl ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          
           <div className="text-xl font-bold">
             <a
               href="/"
@@ -19,7 +22,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Desktop Menu */}
+          
           <div className="hidden md:flex space-x-8">
             <a href="/notfound" className="hover:text-blue-400 transition">
               Ưu Đãi
@@ -32,8 +35,11 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          
+          <div className="hidden md:flex items-center gap-2">
+            <button className="rounded-full cursor-pointer" onClick={() => navigate("/auth")}>
+              Đăng nhập
+            </button>
             <button className="rounded-full cursor-pointer h-6 w-6">
               <img
                 src="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -43,8 +49,11 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          
           <div className="md:hidden flex items-center gap-2">
+            <button className="rounded-full cursor-pointer" onClick={() => navigate("/auth")}>
+              Đăng nhập
+            </button>
             <button className="rounded-full cursor-pointer h-6 w-6">
               <img
                 src="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -59,7 +68,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
+      
       {isOpen && (
         <div className="md:hidden bg-white">
           <a href="/notfound" className="block px-4 py-2 hover:bg-gray-700">

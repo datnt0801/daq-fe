@@ -25,17 +25,19 @@ export interface Item {
 }
 
 export interface Set {
-  id: string;
+  id: number;
   name: string;
   price: number;
   type: "set";
+  description: string;
   image: string;
 }
 
 export interface Buffet {
-  id: string;
+  id: number;
   name: string;
   price: number;
   type: "buffet";
+  description: string;
   image: string;
 }

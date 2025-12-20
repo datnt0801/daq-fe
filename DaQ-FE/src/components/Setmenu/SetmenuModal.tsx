@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
-import type { Table } from "../../shared/types/common";
+import type { Set, Buffet } from "../../shared/types/common";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (data: Table) => void;
-  item?: Table;
+  onSubmit: (data: Set | Buffet) => void;
+  item?: Set | Buffet;
 }
 
-export const TableModal: React.FC<ModalProps> = ({
+export const SetMenuModal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   onSubmit,
   item,
 }) => {
-  const [form, setForm] = useState<Table>({
+  const [form, setForm] = useState<Set | Buffet>({
     id: 0,
     name: "",
-    status: "Available",
-    capacity: 0,
-    floor: 0,
+    price: 0,
+    description: "",
+    image: "",
+    type: "set",
   });
 
   useEffect(() => {
@@ -28,9 +29,10 @@ export const TableModal: React.FC<ModalProps> = ({
       setForm({
         id: 0,
         name: "",
-        status: "Available",
-        capacity: 0,
-        floor: 0,
+        price: 0,
+        description: "",
+        image: "",
+        type: "set",
       });
   }, [item]);
 
@@ -46,7 +48,7 @@ export const TableModal: React.FC<ModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-lg font-bold mb-4">
-          {item?.id !== 0 ? "Sửa bàn" : "Thêm bàn"}
+          {item?.id !== 0 ? "Sửa Menu" : "Thêm Menu"}
         </h2>
         <form
           onSubmit={(e) => {
@@ -61,7 +63,7 @@ export const TableModal: React.FC<ModalProps> = ({
               type="text"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              placeholder="Tên bàn"
+              placeholder="Tên"
               className="peer w-full rounded-md border border-gray-300 bg-transparent p-2 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none"
             />
             <label
@@ -70,50 +72,96 @@ export const TableModal: React.FC<ModalProps> = ({
                peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
                peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
             >
-              Tên bàn
+              Tên
             </label>
           </div>
 
           <div className="relative mt-4">
             <input
-              id="capacity"
+              id="price"
               type="number"
-              value={form.capacity}
+              value={form.price}
               onChange={(e) =>
-                setForm({ ...form, capacity: Number(e.target.value) })
+                setForm({ ...form, price: Number(e.target.value) })
               }
-              placeholder="Số lượng người"
+              placeholder="Giá"
               className="peer w-full rounded-md border border-gray-300 bg-transparent p-2 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none"
             />
             <label
-              htmlFor="capacity"
+              htmlFor="price"
               className="absolute left-3 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all
                peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
                peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
             >
-              Số lượng người
+              Giá
             </label>
           </div>
 
           <div className="relative mt-4">
             <input
-              id="floor"
-              type="number"
-              value={form.floor}
+              id="description"
+              type="text"
+              value={form.description}
               onChange={(e) =>
-                setForm({ ...form, floor: Number(e.target.value) })
+                setForm({ ...form, description: e.target.value })
               }
-              placeholder="Tầng"
+              placeholder="Mô tả"
               className="peer w-full rounded-md border border-gray-300 bg-transparent p-2 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none"
             />
             <label
-              htmlFor="floor"
+              htmlFor="description"
               className="absolute left-3 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all
                peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
                peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
             >
-              Tầng
+              Mô tả
             </label>
+          </div>
+
+          <div className="relative mt-4">
+            <input
+              id="image"
+              type="text"
+              value={form.image}
+              onChange={(e) => setForm({ ...form, image: e.target.value })}
+              placeholder="URL Hình ảnh"
+              className="peer w-full rounded-md border border-gray-300 bg-transparent p-2 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none"
+            />
+            <label
+              htmlFor="image"
+              className="absolute left-3 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all
+               peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
+               peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
+            >
+              URL Hình ảnh
+            </label>
+          </div>
+
+          <div className="mt-4">
+            <p className="mb-2 text-sm text-gray-600">Loại</p>
+            <div className="flex gap-6">
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="type"
+                  value="set"
+                  checked={form.type === "set"}
+                  onChange={() => setForm({ ...form, type: "set" })}
+                />
+                Set
+              </label>
+
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="type"
+                  value="buffet"
+                  checked={form.type === "buffet"}
+                  onChange={() => setForm({ ...form, type: "buffet" })}
+                />
+                Buffet
+              </label>
+            </div>
           </div>
 
           <div className="flex justify-end gap-2 mt-2">
@@ -133,3 +181,5 @@ export const TableModal: React.FC<ModalProps> = ({
     </div>
   );
 };
+
+export default SetMenuModal;

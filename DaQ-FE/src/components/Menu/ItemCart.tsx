@@ -33,7 +33,7 @@ export default function ItemCart({
             className="px-4 py-2 border rounded hover:bg-gray-100 font-semibold focus:bg-gray-100 focus:underline"
             onClick={() => onEdit(item)}
           >
-            Edit
+            Sửa
           </button>
           <button
             className="px-4 py-2 border rounded hover:bg-gray-100 font-semibold focus:bg-gray-100 focus:underline"
@@ -42,7 +42,7 @@ export default function ItemCart({
               onDelete(item.id);
             }}
           >
-            Delete
+            Xóa
           </button>
         </div>
       </div>

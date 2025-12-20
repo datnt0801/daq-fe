@@ -45,6 +45,9 @@ function OrderCart({
             <h1 className="self-start text-3xl font-bold">
               {cartItem.buffet?.name || cartItem.set?.name || cartItem.item?.name}
             </h1>
+            <p className="text-sm">
+              {cartItem.buffet?.description || cartItem.set?.description || cartItem.item?.description}
+            </p>
             <button className="text-md font-bold border rounded p-2 m-2">
               {cartItem.buffet?.price.toLocaleString() ||
                 cartItem.set?.price.toLocaleString() ||

@@ -28,10 +28,11 @@ function OrderLayout() {
   const [sets, setSets] = useState<Set[]>([]);
   const [monLe, setMonLe] = useState<Set[]>([
     {
-      id: "1",
+      id: 1,
       name: "Gọi món trả tiền chỉ từ",
       price: 10000,
       type: "set",
+      description: "",
       image: "",
     },
   ]);
