@@ -16,6 +16,7 @@ import OrderLayout from "./layout/OrderLayout";
 import OrderPage from "./pages/order/OrderPage";
 import OrderMenuPage from "./pages/order/OrderMenuPage";
 import SetMenu from "./pages/admin/SetMenu";
+import Statistic from "./pages/admin/Statistic";
 // import TablesPage from "./pages/admin/Tables";
 // import WarehousePage from "./pages/admin/Warehouse";
 // import StatisticsPage from "./pages/admin/Statistics";
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="menu" element={<MenuPage />} />
           <Route path="table" element={<TablePage />} />
           <Route path="set-menu" element={<SetMenu />} />
+          <Route path="statistics" element={<Statistic />} />
           {/* <Route path="menu" element={<MenuPage />} />
         <Route path="tables" element={<TablesPage />} />
         <Route path="warehouse" element={<WarehousePage />} />
