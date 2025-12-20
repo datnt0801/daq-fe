@@ -74,40 +74,47 @@ export const MenuModal: React.FC<ModalProps> = ({
                peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
                peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
             >
-              Name
+              Tên món
             </label>
           </div>
 
           <div className="relative mt-4">
-            <input
+            <select
               id="categoryId"
-              type="number"
               value={form.categoryId}
               onChange={(e) =>
                 setForm({ ...form, categoryId: Number(e.target.value) })
               }
-              placeholder="Category ID"
-              className="peer w-full rounded-md border border-gray-300 bg-transparent p-2 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none"
-            />
+              className="peer w-full rounded-md border border-gray-300 bg-transparent p-2 text-gray-900
+                        focus:border-blue-500 focus:outline-none"
+            >
+              <option value="" disabled hidden />
+              <option value={4}>Lẩu</option>
+              <option value={5}>Heo</option>
+              <option value={7}>Bò</option>
+            </select>
+
             <label
               htmlFor="categoryId"
               className="absolute left-3 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all
-               peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
-               peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
+                        peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500
+                        peer-[&:not([value=''])]:-top-2.5
+                        peer-[&:not([value=''])]:text-sm"
             >
-              Category ID
+              Loại món
             </label>
           </div>
+
 
           <div className="relative mt-4">
             <input
               id="price"
-              type="number"
+              type="text"
               value={form.price}
               onChange={(e) =>
                 setForm({ ...form, price: Number(e.target.value) })
               }
-              placeholder="Price"
+              placeholder="Giá"
               className="peer w-full rounded-md border border-gray-300 bg-transparent p-2 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none"
             />
             <label
@@ -116,7 +123,7 @@ export const MenuModal: React.FC<ModalProps> = ({
                peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
                peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
             >
-              Price
+              Giá
             </label>
           </div>
 
@@ -128,7 +135,7 @@ export const MenuModal: React.FC<ModalProps> = ({
               onChange={(e) =>
                 setForm({ ...form, description: e.target.value })
               }
-              placeholder="Description"
+              placeholder="Mô tả"
               className="peer w-full rounded-md border border-gray-300 bg-transparent p-2 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none"
             />
             <label
@@ -137,7 +144,7 @@ export const MenuModal: React.FC<ModalProps> = ({
                peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
                peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
             >
-              Description
+              Mô tả
             </label>
           </div>
 
@@ -156,7 +163,7 @@ export const MenuModal: React.FC<ModalProps> = ({
                peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
                peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500 peer-focus:bg-white"
             >
-              Image
+              Hình ảnh
             </label>
           </div>
           <div className="flex justify-end gap-2 mt-2">
@@ -165,10 +172,10 @@ export const MenuModal: React.FC<ModalProps> = ({
               onClick={onClose}
               type="button"
             >
-              Cancel
+              Hủy
             </button>
             <button className="px-3 py-1 bg-blue-500 text-white" type="submit">
-              Save
+              Lưu
             </button>
           </div>
         </form>

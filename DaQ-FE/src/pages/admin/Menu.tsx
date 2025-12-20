@@ -19,7 +19,7 @@ const MenuPage = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   const [id, setId] = useState("");
-  const [category, setCategory] = useState("1");
+  const [category, setCategory] = useState("4");
   const [search, setSearch] = useQueryState("search", { defaultValue: "" });
   const [sort, setSort] = useState("");
 
@@ -70,7 +70,7 @@ const MenuPage = () => {
   return (
     <div className="flex flex-col w-full">
       <div className="sticky top-0 z-10 bg-gray-100">
-        <h1 className="text-xl font-bold m-2">Menu Management</h1>
+        <h1 className="text-xl font-bold m-2">Quản lý món</h1>
         <button
           className="px-4 py-2 border rounded hover:bg-gray-100 font-semibold focus:bg-gray-100 focus:underline m-2"
           onClick={() => {
@@ -86,13 +86,13 @@ const MenuPage = () => {
             setModalOpen(true);
           }}
         >
-          Them mon
+          Thêm món
         </button>
         <div className="flex justify-between gap-1 m-2 ">
           <div className="flex gap-2 mt-2">
             <input
               type="text"
-              placeholder="Search name..."
+              placeholder="Tim kiếm..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="border p-2 rounded"
@@ -102,11 +102,11 @@ const MenuPage = () => {
             </button> */}
           </div>
           <div className="flex gap-2 mt-2">
-            <button
+            {/* <button
               onClick={() => setCategory("1")}
               className="px-4 py-2 border rounded  hover:bg-red-100 font-semibold focus:bg-red-100 focus:underline"
             >
-              Mon Le
+              Món lẻ
             </button>
 
             <button
@@ -114,18 +114,36 @@ const MenuPage = () => {
               className="px-4 py-2 border rounded hover:bg-red-100 font-semibold focus:bg-red-100 focus:underline"
             >
               Buffet
-            </button>
-            <button
+            </button> */}
+            {/* <button
               onClick={() => setCategory("3")}
               className="px-4 py-2 border rounded hover:bg-red-100 font-semibold focus:bg-red-100 focus:underline"
             >
-              Do Uong
-            </button>
+              Đồ uống
+            </button> */}
             <button
               onClick={() => setCategory("4")}
               className="px-4 py-2 border rounded hover:bg-red-100 font-semibold focus:bg-red-100 focus:underline"
             >
-              Trang mieng
+              Lẩu
+            </button>
+            <button
+              onClick={() => setCategory("5")}
+              className="px-4 py-2 border rounded hover:bg-red-100 font-semibold focus:bg-red-100 focus:underline"
+            >
+              Heo
+            </button>
+            {/* <button
+              onClick={() => setCategory("6")}
+              className="px-4 py-2 border rounded hover:bg-red-100 font-semibold focus:bg-red-100 focus:underline"
+            >
+              Cừu
+            </button> */}
+            <button
+              onClick={() => setCategory("7")}
+              className="px-4 py-2 border rounded hover:bg-red-100 font-semibold focus:bg-red-100 focus:underline"
+            >
+              Bò
             </button>
           </div>
         </div>
