@@ -41,7 +41,7 @@ export default function ToggleSidebar({
     { tab: "Món Lẻ", children: monLe.map((s) => s.name) },
     { tab: "Đồ Uống", children: doUong.map((s) => s.name) },
   ];
-
+  console.log(itemsAndCategories);
   return (
     <>
       <div

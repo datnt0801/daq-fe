@@ -18,11 +18,11 @@ function DetailModal({ isOpen, onClose, item }: DetailModalProps) {
     if (!item) return;
     setDetailItem(undefined);
     if (item.type === "buffet") {
-      const res = await getItemsByBuffetId(item.id);
+      const res = await getItemsByBuffetId(item.id.toString());
       setDetailItem(res);
     }
     if (item.type === "set") {
-      const res = await getItemsBySetId(item.id);
+      const res = await getItemsBySetId(item.id.toString());
       setDetailItem(res);
     }
     if (item.type === "item") {

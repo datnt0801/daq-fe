@@ -13,8 +13,8 @@ import DetailModal from "../components/Order/DetailModal";
 import { OrderLayoutContext } from "../context/OrderLayoutContext";
 
 export type ItemWithCategory = {
-  item: Item;
-  quantity: number;
+  items: Item[];
+  category: {id: number, name: string};
 };
 
 export type ItemWithQuantity = {
