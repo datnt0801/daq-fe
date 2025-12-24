@@ -5,8 +5,8 @@ type Order = {
   id: number;
   createdAt: string;
   status: "PAID" | "UNPAID";
-  total: number; // số lượng
-  price: number; // tiền
+  total: number; 
+  price: number; 
   payment_method: string;
   type: string;
 };
@@ -51,13 +51,11 @@ function Statistic() {
   const totalOrders = orders.length;
   const totalPaidOrders = paidOrders.length;
 
-  // hôm nay
   const today = new Date().toISOString().slice(0, 10);
   const todayRevenue = paidOrders
     .filter(o => o.createdAt.startsWith(today))
     .reduce((sum, o) => sum + o.price, 0);
 
-  // doanh thu theo ngày
   const revenueByDate = paidOrders.reduce<Record<string, number>>(
     (acc, o) => {
       const date = o.createdAt.slice(0, 10);
